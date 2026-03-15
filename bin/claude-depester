@@ -198,7 +198,7 @@ async function main() {
           log(`  Has =["Thought"]: ${debug.hasCompletionReplacement}`);
           log(`  Has original spinner array: ${debug.hasOriginalSpinnerArray}`);
           log(`  Has original completion array: ${debug.hasOriginalCompletionArray}`);
-          log(`  Marker words found: ${debug.markerWordsFound.length > 0 ? debug.markerWordsFound.join(', ') : 'none'}`);
+          log(`  Marker words found: ${debug.markerWordsCount || 0} (${debug.markerWordsFound.length > 0 ? debug.markerWordsFound.join(', ') + (debug.markerWordsCount > debug.markerWordsFound.length ? ', ...' : '') : 'none'})`);
           log(`  Completion verbs found: ${debug.completionVerbsFound.length > 0 ? debug.completionVerbsFound.join(', ') : 'none'}`);
           log('');
           log('Computed status:');
@@ -260,7 +260,7 @@ async function main() {
                 if (r.debug) {
                   log(`    File modified: ${r.debug.fileModified}`);
                   log(`    Has =["Thinking"]: ${r.debug.hasReplacementPattern}`);
-                  log(`    Marker words: ${r.debug.markerWordsFound?.length > 0 ? r.debug.markerWordsFound.join(', ') : 'none'}`);
+                  log(`    Marker words: ${r.debug.markerWordsCount || 0} found`);
                 }
                 if (r.error) {
                   log(`    Error: ${r.error}`);
